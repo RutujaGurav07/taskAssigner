@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "taskAssigner"
+    }
+  },
+  "defaultProject": "taskAssigner",
+  "cli": {
+    "analytics": false
+  }
 }
