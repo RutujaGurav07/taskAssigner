@@ -1,22 +1,10 @@
 .wrapper{
-    display: flex;
-    height: 100%;
-    width: auto;
-    align-items: stretch;
+    padding: 20px 20px 20px 20px;
     margin: 20px 20px 20px 20px;
-    padding: 20px 20px 2opx 20px;
-    background-color: aliceblue;
-
-
 }
-.logo{
-    height: 50px;
-    width: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.navbar-inverse{
+    width: max-content;
+    background-color: rgb(209, 239, 243);
+    height: auto;
 
-}
-.navbar-nav{
-    text-align:center;
 }
