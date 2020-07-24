@@ -12,5 +12,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  toggle_sidenavbar(){
 
+}
 }
