@@ -4,7 +4,7 @@
 }
 .navbar-inverse{
     width:20%;
-    background-color: rgb(14, 15, 15);
+    background-color: rgb(41, 51, 82);
     height: auto;
 
 }
@@ -26,3 +26,6 @@
     display: block;
     margin-top: 20px;
 }
+.sidebar-nav li a:hover{
+     background-color: rgb(128, 142, 180);
+ }
