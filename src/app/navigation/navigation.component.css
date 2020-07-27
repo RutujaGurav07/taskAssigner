@@ -1,9 +1,10 @@
 .wrapper{
     padding: 20px 20px 20px 20px;
     margin: 20px 20px 20px 20px;
+    
 }
 .navbar-inverse{
-    width:20%;
+    width:max-content;
     background-color: rgb(41, 51, 82);
     height: auto;
 
@@ -45,5 +46,6 @@
     border: none;
   }
   .container{
-      margin-left: 150px;
+      margin-left: 200px;
+      position: relative;
   }
