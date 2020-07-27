@@ -1,12 +1,14 @@
 <div class="arrowbtn">
-    <button class="openbtn" (click)="openNav()" >
+
+    <!-- WOrking on toggle button -->
+    <!-- <button class="openbtn" (click)="openNav()" >
         >
     </button>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
 </div>
-<div class="wrapper" >
+<div class="wrapper">
     <nav class="navbar navbar-inverse navbar-fixed-top " id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav text-white">
             <li class="sidebar-nav">
@@ -18,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="/#"> Board</a>
+                <a href="/board"> Board</a>
             </li>
             <li>
                 <a href="#">Project settings</a>
@@ -39,11 +41,9 @@
                 <a href="#">Component</a>
             </li>
         </ul>
-
-
     </nav>
-
     <div class="container">
         <router-outlet></router-outlet>
     </div>
-</div>
+ </div>
+    

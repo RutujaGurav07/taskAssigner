@@ -1,15 +1,14 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProfileComponent } from './profile/profile.component';
-
+import { BoardComponent } from "./board/board.component";
 
 const routes: Routes = [
-  { path :"profile" ,component:ProfileComponent}
+  { path :"board" ,component:BoardComponent}
 ];
 
 @NgModule({
-  declarations: [ ProfileComponent ],
+  declarations: [ BoardComponent ],
   imports: [
     RouterModule.forRoot(routes)],  
     exports: [RouterModule]
