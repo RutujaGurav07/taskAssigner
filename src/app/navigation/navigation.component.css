@@ -29,3 +29,18 @@
 .sidebar-nav li a:hover{
      background-color: rgb(128, 142, 180);
  }
+ .fa-angle-left{
+     font-size: 100px;
+ }
+ .arrowbtn{
+     margin-left: 185px;
+
+ }
+ .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(236, 228, 228);
+    color: rgb(72, 70, 175);
+    padding: 10px 15px;
+    border: none;
+  }

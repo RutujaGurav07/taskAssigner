@@ -1,7 +1,13 @@
-<div class="wrapper">
-
+<div class="arrowbtn">
+    <button class="openbtn" (click)="openNav()" >
+        >
+    </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+<div class="wrapper" >
     <nav class="navbar navbar-inverse navbar-fixed-top " id="sidebar-wrapper" role="navigation">
-      
         <ul class="nav sidebar-nav text-white">
             <li class="sidebar-nav">
                 <a href="#">
@@ -12,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">Kanban Board</a>
+                <a href="/#"> Board</a>
             </li>
             <li>
                 <a href="#">Project settings</a>
@@ -36,6 +42,7 @@
 
 
     </nav>
+
     <div class="container">
         <router-outlet></router-outlet>
     </div>
