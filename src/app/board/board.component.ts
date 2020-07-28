@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { CdkDragDrop,CdkDropList, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-board',

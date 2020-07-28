@@ -6,19 +6,21 @@
             <div class="card-header">
                 <h5>Development</h5>
             </div>
-            <div cdkDropList #developmentlist="cdkDropList " [cdkDropListData]="development"
-                [cdkDropListConnectionTo]="[inprocess]" class="example-list" (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor ="let item of development" cdkDrag>{{item}}</div>
-            </div>
+            <!-- <div 
+                cdkDropList 
+                #developmentList = "cdkDropList"
+                [cdkDropListConnectedTo]="[inprocessList]">
+            </div> -->
         </div>
         <div class="inprocess">
             <div class="card-header">
                 <h5>In process</h5>
             </div>
-            <div cdkDropList #inprocesslist="cdkDropList " [cdkDropListData]="inprocess"
-            [cdkDropListConnectionTo]="[developmentlist]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <!-- <div
+             cdkDrop #inprocesslist="cdkDropList" [cdkDropListData]="inprocess"
+            [cdkDropConnectedTo]="[developmentlist]" class="example-list" (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor ="let item of inprocess" cdkDrag>{{item}}</div>
-        </div>
+        </div> -->
         </div>
         <div class="Done">
             <div class="card-header">

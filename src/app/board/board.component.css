@@ -29,6 +29,7 @@
 .container{
     text-align: center;
 }
+/* drag-drop styling */
 .example-container {
     width: 400px;
     max-width: 100%;
