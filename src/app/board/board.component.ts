@@ -10,14 +10,19 @@ export class BoardComponent implements OnInit {
   development = [
     'Get to work',
     'Pick up grocerise',
-    'dfhghdfd',
+    'Ready for dinner ',
     'go home'
   ];
   inprocess = [
     'get up',
-    'hfhsk',
-    'fhsgfhj',
-    'hgfshj'
+    'iron cloths',
+    'Working on project ',
+    'listening music'
+  ];
+  done =[
+    'study mp',
+    'making card',
+    'fixing error',
   ]
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
