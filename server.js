@@ -15,9 +15,21 @@ const con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  let sql = `CREATE TABLE task (task_id INT AUTO_INCREMENT PRIMARY KEY, task TEXT,status VARCHAR(100) )`;
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("The task table is created!!");
-  });
+  // let sql = `INSERT INTO task(task,status) VALUES("Get up early in morning","inprocess") `;
+  // con.query(sql, function (err, result) {
+  //   if (err) throw err;
+  //   console.log("inserted in table!!");
+  // });
 });
+
+const port = process.env.PORT || 8080;
+
+const app =express()
+  .use(cors())
+  .use(bodyPaser.json())
+  .use(events(con));
+
+
+  app.listen(port, () => {
+    console.log(`Express server listening on port ${port}`);
+  });
