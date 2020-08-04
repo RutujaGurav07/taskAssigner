@@ -18,7 +18,7 @@ function createRouter(db) {
   });
   router.get('/event', function (req, res, next) {
     db.query(
-      'SELECT id, task FROM task WHERE status=? ORDER BY task_id ?',
+      'SELECT task_id, task FROM task WHERE status="inprocess" ORDER BY task_id',
     //   [owner, 10*(req.params.page || 0)],
       (error, results) => {
         if (error) {
