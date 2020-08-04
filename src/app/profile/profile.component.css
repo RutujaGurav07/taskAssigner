@@ -1,4 +1,4 @@
-.example-container {
+/* .example-container {
   width: 400px;
   max-width: 100%;
   margin: 0 25px 25px 0;
@@ -51,4 +51,13 @@
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+} */
+
+.page-content {
+  margin-top: 2rem;
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }

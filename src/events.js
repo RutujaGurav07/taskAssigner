@@ -1,7 +1,7 @@
 const express = require('express');
 function createRouter(db) {
   const router = express.Router();
-  const task = '';
+//   const task = '';
   router.post('/event', (req, res, next) => {
     db.query(
       'INSERT INTO task (task , status) VALUES (?,?)',
