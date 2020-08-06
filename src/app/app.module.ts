@@ -12,6 +12,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BoardComponent } from "./board/board.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
   { path: "board", component: BoardComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     AppComponent,
     NavigationComponent,
     BoardComponent,
-    ProfileComponent
+    ProfileComponent,
+    PagesComponent
 
   ],
   imports: [

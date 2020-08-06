@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { ITask } from "./board/task";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class Server1Service {
     return this.request('GET', `${environment.serverUrl}/event`);
   }
   createEvent(event) {
-    return this.request('POST', `${environment.serverUrl}/event`, event);
+    return this.request('POST', `${environment.serverUrl}/event`, );
   }
 
 }

@@ -1,76 +1,13 @@
-<!-- <div class="example-container">  
-    <h2>To do</h2>
-  
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-  
-  <div class="example-container">
-    <h2>Done</h2>
-  
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-   -->
-
-<!-- <div class="container page-content">
-  <div class="row">
-  
-    <div class="col-md-2">
-      <button type="button" class="btn btn-primary" (click)="addEvent()"> Add</button>
-     
-    </div>
-  </div>
-</div>
-
-<ng-template #eventmodal>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Event</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group full-width-input">
-        <label>Task</label>
-        <input class="form-control" placeholder="task" formControlName="name" required>
-      </div>
-      <div class="form-group full-width-input">
-        <label>Status</label>
-        <input class="form-control" formControlName="description">
-      </div>
-      
-      <div class="button-row">
-        <button type="button" class="btn btn-primary" (click)="modalCallback()">Submit</button>
-        <button type="button" class="btn btn-light" (click)="onCancel()">Cancel</button>
-      </div>
-    </form>
-  </div>
-</ng-template> -->
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-primary" (click)="addEvent(eventmodal)"data-toggle="modal" data-target="#exampleModalCenter">
   Create a Task
 </button>
 
 <!-- Modal -->
+<!-- <ng-template #eventmodal> -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+  aria-hidden="true"#eventmodal>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,24 +20,30 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group full-width-input">
             <label>Task</label>
-            <input class="form-control" placeholder="task" formControlName="task" required>
+            <input class="form-control" placeholder="task" formControlName="task" #Ctask required>
           </div>
           <div class="form-group full-width-input">
             <label>Status</label>
-            <select class="form-control" id="status">
+            <!-- <select class="form-control" id="status">
               <option>Development</option>
               <option>Inprocess</option>
-              <option>Done</option>
-              
-            </select>
+              <option>Done</option> 
+            </select>-->
+            <input class="form-control" placeholder="status" formControlName="status" #Cstatus required>
+
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="modalCallback()">Submit</button>
       </div>
     </div>
   </div>
+</div>
+<!-- </ng-template> -->
+<div class="getdata">
+  <button type="button" class="btn btn-secondary" (click)=getEvents()>ShowDATA</button>
+<h2></h2>
 </div>
