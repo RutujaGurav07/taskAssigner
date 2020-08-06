@@ -24,8 +24,9 @@ export class Server1Service {
   getEvents() {
     return this.request('GET', `${environment.serverUrl}/event`);
   }
-  createEvent(event) {
-    return this.request('POST', `${environment.serverUrl}/event`, );
+  createEvent(newEvent) {
+    console.log("createEvent function",newEvent);
+    return this.request('POST', `${environment.serverUrl}/event`,newEvent );
   }
 
 }

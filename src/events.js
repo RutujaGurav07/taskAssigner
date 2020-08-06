@@ -20,9 +20,11 @@ function createRouter(db) {
 
 
   router.post('/event', (req, res, next) => {
+    
     db.query(
-      'INSERT INTO task (task , status) VALUES (?,?)',
-      [req.body.status, req.header.task],
+      'INSERT INTO task (task ,status) VALUES (?,?)',
+      [req.body.task,req.body.status],
+      
       (error) => {
         if (error) {
           console.error(error);
@@ -32,6 +34,8 @@ function createRouter(db) {
         }
       }
     );
+    console.log(req.body.task);
+    console.log(req.body.status);
   });
 
   //   router.put('/event/:id', function (req, res, next) {

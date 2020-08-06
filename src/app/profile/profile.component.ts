@@ -33,7 +33,7 @@ export class ProfileComponent {
   // }
   addEvent(template
     ) {
-    // this.currentEvent = { task: '', status: ''};
+    this.currentEvent = { task: '', status: ''};
     // this.updateForm();
     this.modalCallback = this.createEvent.bind(this);
   }
@@ -51,8 +51,7 @@ export class ProfileComponent {
       status: this.form.get('status').value,
     };
     this.server.createEvent(newEvent).then(() => {
-      console.log("createEvent function",newEvent);
-      
+      console.log("in profile component createEvent function",newEvent);
       this.getEvents();
     });
   }
