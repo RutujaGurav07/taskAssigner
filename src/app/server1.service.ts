@@ -9,6 +9,7 @@ import { ITask } from "./board/task";
 export class Server1Service {
 
   constructor(private http: HttpClient) { }
+
   private async request(method: string, url: string, data?: any) {
 
     const result = this.http.request(method, url, {
@@ -21,8 +22,9 @@ export class Server1Service {
       result.subscribe(resolve, reject);
     });
   }
+  
   getEvents() {
-    return this.request('GET', `${environment.serverUrl}/event`);
+     return this.request('GET', `${environment.serverUrl}/event`);
   }
   createEvent(newEvent) {
     console.log("createEvent function",newEvent);

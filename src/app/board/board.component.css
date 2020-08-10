@@ -5,10 +5,14 @@
   padding: 10px 10px 10px 10px;
   float: left;
   background-color: rgba(192, 195, 199, 0.808);
-
-
 }
 
+.header{
+  height: fit-content;
+}
+.addevent{
+margin-left:50px ;
+}
 .inprocess {
   width: 30%;
   height: 50%;

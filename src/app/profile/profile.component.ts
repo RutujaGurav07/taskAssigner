@@ -13,7 +13,7 @@ export class ProfileComponent {
 
 
   events: any[] = [];
-  currentEvent: any = { id: null, task: '', status: '' };
+  currentEvent: any = { id: null, task: ' ', status: ' ' };
   modalCallback: () => void;
 
 
@@ -28,22 +28,20 @@ export class ProfileComponent {
   onSubmit() {
 
   }
-  // addEvent(){
-    
-  // }
-  addEvent(template
-    ) {
-    this.currentEvent = { task: '', status: ''};
-    // this.updateForm();
-    this.modalCallback = this.createEvent.bind(this);
-  }
-  // private updateForm() {
-  //   this.form.setValue({
-  //     task: this.currentEvent.task,
-  //     status: this.currentEvent.status,
 
-  //   });
-  // }
+  addEvent(template) {
+    this.currentEvent = { task: ' ', status: ' '};
+    this.updateForm();
+    this.modalCallback = this.createEvent.bind(this);
+    
+  }
+   updateForm() {
+    this.form.setValue({
+      task: this.currentEvent.task,
+      status: this.currentEvent.status,
+    });
+    console.log("update form");
+  }
 
   createEvent() {
     const newEvent = {
@@ -57,7 +55,7 @@ export class ProfileComponent {
   }
 
     getEvents() {
-      this.server.getEvents().then((response: any) => {
+       this.server.getEvents().then((response: any) => {
         console.log('Response', response);
         this.events = response.map((ev) => {
           ev.body = ev.status;
