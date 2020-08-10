@@ -38,19 +38,19 @@ function createRouter(db) {
     console.log(req.body.status);
   });
 
-  //   router.put('/event/:id', function (req, res, next) {
-  //     db.query(
-  //       'UPDATE events SET name=?, description=?, date=? WHERE id=? AND owner=?',
-  //       [req.body.name, req.body.description, new Date(req.body.date), req.params.id, owner],
-  //       (error) => {
-  //         if (error) {
-  //           res.status(500).json({status: 'error'});
-  //         } else {
-  //           res.status(200).json({status: 'ok'});
-  //         }
-  //       }
-  //     );
-  //   });
+    router.put('/event/:task', function (req, res, next) {
+      db.query(
+        'UPDATE task SET  status=? WHERE task=?',
+        [req.body.task, req.body.status,],
+        (error) => {
+          if (error) {
+            res.status(500).json({status: 'error'});
+          } else {
+            res.status(200).json({status: 'update done'});
+          }
+        }
+      );
+    });
   return router;
 }
 module.exports = createRouter;

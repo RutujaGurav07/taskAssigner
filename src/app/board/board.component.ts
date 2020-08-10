@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ITask} from './task'
+import { ITask } from './task'
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Server1Service } from '../server1.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
@@ -18,7 +18,7 @@ export class BoardComponent implements OnInit {
 
   development: ITask[] = [];
   inprocess: ITask[] = [];
-  done : ITask[] = [];
+  done: ITask[] = [];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -45,17 +45,18 @@ export class BoardComponent implements OnInit {
   }
 
   addEvent(template) {
-    this.currentEvent = { task: ' ', status: ' '};
-    this.updateForm();
+    this.currentEvent = { task: ' ', status: ' ' };
     this.modalCallback = this.createEvent.bind(this);
-    
+    this.updateForm();
+
+  
   }
-   updateForm() {
+  updateForm() {
     this.form.setValue({
       task: this.currentEvent.task,
       status: this.currentEvent.status,
     });
-    console.log("update form");
+    
   }
 
   createEvent() {
@@ -64,24 +65,34 @@ export class BoardComponent implements OnInit {
       status: this.form.get('status').value,
     };
     this.server.createEvent(newEvent).then(() => {
-      console.log("in profile component createEvent function",newEvent);
+      console.log("in profile component createEvent function", newEvent);
       this.getEvents();
     });
   }
 
-    getEvents() {
-      this.server.getEvents().then((response: any) => {
-        console.log('Response', response);
-        this.events = response.map((ev) => {
-          ev.body = ev.status;
-          ev.header = ev.task;
-       
-          return ev;
-        });
-        this.development = this.events.filter(ev=>ev.status=="Development");
-        this.inprocess = this.events.filter(ev=>ev.status=="Inprocess");
-        this.done = this.events.filter(ev=>ev.status=="Done");
-      });
-    }
+  getEvents() {
+    this.server.getEvents().then((response: any) => {
+      console.log('Response', response);
+      this.events = response.map((ev) => {
+        ev.body = ev.status;
+        ev.header = ev.task;
 
+        return ev;
+      });
+      this.development = this.events.filter(ev => ev.status == "Development");
+      this.inprocess = this.events.filter(ev => ev.status == "Inprocess");
+      this.done = this.events.filter(ev => ev.status == "Done");
+    });
+  }
+  updateEvent() {
+    const eventData = {
+      // id: this.currentEvent.id,
+      task: this.form.get('task').value,
+      status: this.form.get('status').value,
+    };
+    
+    this.server.updateEvent(eventData).then(() => {
+      this.getEvents();
+    });
+  }
 }

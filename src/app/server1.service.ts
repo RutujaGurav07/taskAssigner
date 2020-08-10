@@ -30,5 +30,9 @@ export class Server1Service {
     console.log("createEvent function",newEvent);
     return this.request('POST', `${environment.serverUrl}/event`,newEvent );
   }
+  
+  updateEvent(event) {
+    return this.request('PUT', `${environment.serverUrl}/event/${event.status}`, event);
+  }
 
 }
