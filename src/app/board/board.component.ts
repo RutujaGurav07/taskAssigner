@@ -78,10 +78,9 @@ export class BoardComponent implements OnInit {
        
           return ev;
         });
-        // this.development= this.events.sel;
-        this.development = this.events.filter(ev=>ev.status=="development");
-        this.inprocess = this.events.filter(ev=>ev.status=="inprocess");
-        this.done = this.events.filter(ev=>ev.status=="done");
+        this.development = this.events.filter(ev=>ev.status=="Development");
+        this.inprocess = this.events.filter(ev=>ev.status=="Inprocess");
+        this.done = this.events.filter(ev=>ev.status=="Done");
       });
     }
 
