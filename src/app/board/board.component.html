@@ -16,7 +16,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form [formGroup]="form" >
+            <form [formGroup]="form">
               <div class="form-group full-width-input">
                 <label>Task</label>
                 <input class="form-control" placeholder="task" formControlName="task" #Ctask required>
@@ -52,8 +52,8 @@
       </div>
       <div cdkDropList #developmentList="cdkDropList" [cdkDropListData]="development"
         [cdkDropListConnectedTo]="[inprocessList,doneList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of development" cdkDrag  >{{item.task}}  {{item.status}}</div>
-       
+        <div class="box" *ngFor="let item of development" cdkDrag>{{item.task}} {{item.status}}</div>
+
       </div>
     </div>
 
@@ -72,16 +72,15 @@
       <div class="card-header">
         <h5>Done</h5>
       </div>
-      <div class="body">
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-          [cdkDropListConnectedTo]="[inprocessList,developmentList]" class="body" (cdkDropListDropped)="drop($event)">
-          <div class="box" *ngFor="let item of done" cdkDrag>{{item.task}}</div>
-        </div>
 
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[inprocessList,developmentList]" class="body" (cdkDropListDropped)="drop($event)">
+        <div class="box" *ngFor="let item of done" cdkDrag>{{item.task}}</div>
       </div>
-    </div>
-<div >
 
-</div>
+    </div>
+    <div>
+
+    </div>
   </div>
 </div>

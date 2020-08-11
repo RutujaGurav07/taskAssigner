@@ -3,6 +3,7 @@ import { ITask } from './task'
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem, CdkDrag } from "@angular/cdk/drag-drop";
 import { Server1Service } from '../server1.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { Xliff } from '@angular/compiler';
 
 @Component({
   selector: 'app-board',
@@ -15,6 +16,7 @@ export class BoardComponent implements OnInit {
   currentEvent: any = { id: null, task: ' ', status: ' ' };
   modalCallback: () => void;
   newdata;
+  x;
   development: ITask[] = [];
   inprocess: ITask[] = [];
   done: ITask[] = [];
@@ -27,12 +29,17 @@ export class BoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-        this.newdata = event.container.data[event.currentIndex];
-    console.log('in drag fun', this.newdata);
-    this.updateEvent( this.newdata);
-       
+      this.newdata = event.container.data[event.currentIndex];
+      // this.x = event.container.element.nativeElement.parentNode
+      this.x = event.container.element.nativeElement.parentElement.className
+      this.updateEvent(this.newdata, this.x);
+      console.log(this.x)
+
     }
+
+
   }
+
 
 
   constructor(private fb: FormBuilder, private server: Server1Service) { }
@@ -90,19 +97,19 @@ export class BoardComponent implements OnInit {
       this.done = this.events.filter(ev => ev.status == "Done");
     });
   }
-  updateEvent(newdata) {
+  updateEvent(newdata, updatestatus) {
     console.log("in updatefunction", newdata)
     const eventData = {
       task: newdata.task,
-      status: newdata.status,
+      status: updatestatus,
     };
     console.log('binding to eventdata in update Event', eventData.status, eventData.task)
 
-    // this.server.updateEvent(eventData).then(() => {
-    //   console.log("in board component updateEvent function", eventData);
-    //   this.getEvents();
+    this.server.updateEvent(eventData).then(() => {
+      console.log("in board component updateEvent function", eventData);
+      this.getEvents();
 
-    // });
+  });
 
-  }
+}
 }
