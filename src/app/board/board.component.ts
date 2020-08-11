@@ -91,7 +91,7 @@ export class BoardComponent implements OnInit {
 
         return ev;
       });
-      this.development = this.events.filter(ev => ev.status == "Development");
+      this.development = this.events.filter(ev => ev.status == "Development" );
       this.inprocess = this.events.filter(ev => ev.status == "Inprocess");
       this.done = this.events.filter(ev => ev.status == "Done");
     });
@@ -106,7 +106,7 @@ export class BoardComponent implements OnInit {
 
     this.server.updateEvent(eventData).then(() => {
       console.log("in board component updateEvent function", eventData);
-      this.getEvents();
+      // this.getEvents();
 
   });
 
