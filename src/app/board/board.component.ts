@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITask } from './task'
-import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem, CdkDrag } from "@angular/cdk/drag-drop";
 import { Server1Service } from '../server1.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
@@ -14,13 +14,12 @@ export class BoardComponent implements OnInit {
   events: ITask[] = [];
   currentEvent: any = { id: null, task: ' ', status: ' ' };
   modalCallback: () => void;
-
-
+  newdata;
   development: ITask[] = [];
   inprocess: ITask[] = [];
   done: ITask[] = [];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<ITask[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -28,8 +27,13 @@ export class BoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+        this.newdata = event.container.data[event.currentIndex];
+    console.log('in drag fun', this.newdata);
+    this.updateEvent( this.newdata);
+       
     }
   }
+
 
   constructor(private fb: FormBuilder, private server: Server1Service) { }
 
@@ -39,6 +43,7 @@ export class BoardComponent implements OnInit {
       status: [this.currentEvent.status, Validators.required]
     });
     this.getEvents();
+
   }
   onSubmit() {
 
@@ -49,14 +54,14 @@ export class BoardComponent implements OnInit {
     this.modalCallback = this.createEvent.bind(this);
     this.updateForm();
 
-  
+
   }
   updateForm() {
     this.form.setValue({
       task: this.currentEvent.task,
       status: this.currentEvent.status,
     });
-    
+
   }
 
   createEvent() {
@@ -65,14 +70,15 @@ export class BoardComponent implements OnInit {
       status: this.form.get('status').value,
     };
     this.server.createEvent(newEvent).then(() => {
-      console.log("in profile component createEvent function", newEvent);
+
       this.getEvents();
     });
+
   }
 
   getEvents() {
     this.server.getEvents().then((response: any) => {
-      console.log('Response', response);
+      // console.log('Response', response);
       this.events = response.map((ev) => {
         ev.body = ev.status;
         ev.header = ev.task;
@@ -84,15 +90,19 @@ export class BoardComponent implements OnInit {
       this.done = this.events.filter(ev => ev.status == "Done");
     });
   }
-  updateEvent() {
+  updateEvent(newdata) {
+    console.log("in updatefunction", newdata)
     const eventData = {
-      // id: this.currentEvent.id,
-      task: this.form.get('task').value,
-      status: this.form.get('status').value,
+      task: newdata.task,
+      status: newdata.status,
     };
-    
-    this.server.updateEvent(eventData).then(() => {
-      this.getEvents();
-    });
+    console.log('binding to eventdata in update Event', eventData.status, eventData.task)
+
+    // this.server.updateEvent(eventData).then(() => {
+    //   console.log("in board component updateEvent function", eventData);
+    //   this.getEvents();
+
+    // });
+
   }
 }

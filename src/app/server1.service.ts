@@ -27,11 +27,12 @@ export class Server1Service {
      return this.request('GET', `${environment.serverUrl}/event`);
   }
   createEvent(newEvent) {
-    console.log("createEvent function",newEvent);
     return this.request('POST', `${environment.serverUrl}/event`,newEvent );
   }
   
   updateEvent(event) {
+    console.log("createEvent function",event);
+
     return this.request('PUT', `${environment.serverUrl}/event/${event.status}`, event);
   }
 

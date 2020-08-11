@@ -52,7 +52,8 @@
       </div>
       <div cdkDropList #developmentList="cdkDropList" [cdkDropListData]="development"
         [cdkDropListConnectedTo]="[inprocessList,doneList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of development" cdkDrag>{{item.task}}</div>
+        <div class="box" *ngFor="let item of development" cdkDrag  >{{item.task}}  {{item.status}}</div>
+       
       </div>
     </div>
 
@@ -63,7 +64,7 @@
 
       <div cdkDropList #inprocessList="cdkDropList" [cdkDropListData]="inprocess"
         [cdkDropListConnectedTo]="[developmentList,doneList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of inprocess" cdkDrag>{{item.task}}</div>
+        <div class="box" *ngFor="let item of inprocess" cdkDrag>{{item.task}} {{item.status}}</div>
       </div>
 
     </div>
@@ -79,6 +80,8 @@
 
       </div>
     </div>
+<div >
 
+</div>
   </div>
 </div>
