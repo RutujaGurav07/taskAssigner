@@ -29,15 +29,14 @@ export class BoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+
       this.newdata = event.container.data[event.currentIndex];
-      // this.x = event.container.element.nativeElement.parentNode
-      this.x = event.container.element.nativeElement.parentElement.className
-      this.updateEvent(this.newdata, this.x);
-      console.log(this.x)
+      this.x = event.container.element.nativeElement.parentElement.className;
+    
 
     }
 
-
+    this.updateEvent(this.newdata, this.x);
   }
 
 

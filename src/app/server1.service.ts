@@ -31,9 +31,9 @@ export class Server1Service {
   }
   
   updateEvent(event) {
-    console.log("createEvent function",event);
+    console.log("createEvent function in server1",event.task);
 
-    return this.request('PUT', `${environment.serverUrl}/event/${event.status}`, event);
+    return this.request('PUT', `${environment.serverUrl}/event/${event.task}`, event);
   }
 
 }
