@@ -38,8 +38,8 @@ function createRouter(db) {
 
     router.put('/event/:task', function (req, res, next) {
       db.query(
-        'UPDATE task SET status = ? WHERE task = ?',
-        [req.body.status, req.params.task],
+        'UPDATE task SET status = ? task = ? WHERE task = ?',
+        [req.body.status, req.body.task, req.params.task],
         
         (error) => {
           if (error) {
@@ -51,6 +51,7 @@ function createRouter(db) {
       );
       console.log(req.params.task);
       console.log(req.body.status);
+      console.log(req.body.task);
     });
 
   return router;

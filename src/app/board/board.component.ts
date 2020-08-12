@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit {
   modalCallback: () => void;
   newdata;
   x;
+  y;
   development: ITask[] = [];
   inprocess: ITask[] = [];
   done: ITask[] = [];
@@ -104,10 +105,11 @@ export class BoardComponent implements OnInit {
       task: newdata.task,
       status: updatestatus,
     };
+    const task = newdata.task;
     console.log('binding to eventdata in update Event', eventData.status, eventData.task)
 
-    this.server.updateEvent(eventData).then(() => {
-      console.log("in board component updateEvent function", eventData);
+    this.server.updateEvent(eventData,task).then(() => {
+      console.log("in board component updateEvent function", eventData,task);
       // this.getEvents();
 
     });
@@ -120,11 +122,20 @@ export class BoardComponent implements OnInit {
       task: item.task,
       status: item.status
     })
+    this.y = item.task;
     // this.form.patchValue({
     //   task: item.task,
     //   status: item.status
     // })
-    console.log("form", status)
+
+  }
+  updateFormevent( ){
+    console.log("in update Form event ")
+    const updatevalue={
+      task: this.form.get('task').value,
+      status: this.form.get('status').value,
+    }
+    console.log('binding to eventdata in update Event',  updatevalue.task,updatevalue.status, this .y)
 
   }
 
