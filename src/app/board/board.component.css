@@ -1,4 +1,4 @@
-.development {
+.Development {
   width: 30%;
   height: 50%;
   margin: 10px 10px 10px 10px;
@@ -13,7 +13,7 @@
 .addevent{
 margin-left:50px ;
 }
-.inprocess {
+.Inprocess {
   width: 30%;
   height: 50%;
   margin: 10px 10px 10px 10px;
@@ -50,7 +50,7 @@ margin-left:50px ;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  cursor: move;
+  cursor: pointer;
   background: white;
   font-size: 14px;
 }

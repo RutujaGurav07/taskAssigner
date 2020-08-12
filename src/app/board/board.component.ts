@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit {
 
       this.newdata = event.container.data[event.currentIndex];
       this.x = event.container.element.nativeElement.parentElement.className;
-    
+
 
     }
 
@@ -54,6 +54,7 @@ export class BoardComponent implements OnInit {
   onSubmit() {
 
   }
+
 
   addEvent(template) {
     this.currentEvent = { task: ' ', status: ' ' };
@@ -91,11 +92,12 @@ export class BoardComponent implements OnInit {
 
         return ev;
       });
-      this.development = this.events.filter(ev => ev.status == "Development" );
+      this.development = this.events.filter(ev => ev.status == "Development");
       this.inprocess = this.events.filter(ev => ev.status == "Inprocess");
       this.done = this.events.filter(ev => ev.status == "Done");
     });
   }
+  
   updateEvent(newdata, updatestatus) {
     console.log("in updatefunction", newdata)
     const eventData = {
@@ -108,7 +110,22 @@ export class BoardComponent implements OnInit {
       console.log("in board component updateEvent function", eventData);
       // this.getEvents();
 
-  });
+    });
+  }
+  showdata(template, item) {
 
-}
+    console.log("it works")
+    console.log("item", item.status, item.task)
+    this.form.setValue({
+      task: item.task,
+      status: item.status
+    })
+    // this.form.patchValue({
+    //   task: item.task,
+    //   status: item.status
+    // })
+    console.log("form", status)
+
+  }
+
 }

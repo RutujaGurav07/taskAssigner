@@ -19,7 +19,7 @@
             <form [formGroup]="form">
               <div class="form-group full-width-input">
                 <label>Task</label>
-                <input class="form-control" placeholder="task" formControlName="task" #Ctask required>
+                <input class="form-control" placeholder="task" formControlName="task" required>
               </div>
               <div class="form-group full-width-input">
                 <label>Status</label>
@@ -44,27 +44,57 @@
   </div>
 
 
+  <!-- data show  Modal -->
+
+
+  <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true" #eventmodal>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><strong>Task Details</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form">
+            <div class="form-group full-width-input">
+              <label>Task</label>
+              <input class="form-control" placeholder="task" formControlName="task">
+              <label>Status</label>
+              <input class="form-control" placeholder="status" formControlName="status" >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="container">
 
-    <div class="development">
+    <div class="Development">
       <div class="card-header">
         <h5>Development</h5>
       </div>
       <div cdkDropList #developmentList="cdkDropList" [cdkDropListData]="development"
         [cdkDropListConnectedTo]="[inprocessList,doneList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of development" cdkDrag>{{item.task}} {{item.status}}</div>
+        <div class="box" *ngFor="let item of development" cdkDrag (click)="showdata(showeventmodal,item)" data-toggle="modal"
+          data-target="#ModalCenter">{{item.task}} </div>
 
       </div>
     </div>
 
-    <div class="inprocess">
+    <div class="Inprocess">
       <div class="card-header">
         <h5>In process</h5>
       </div>
 
       <div cdkDropList #inprocessList="cdkDropList" [cdkDropListData]="inprocess"
         [cdkDropListConnectedTo]="[developmentList,doneList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of inprocess" cdkDrag>{{item.task}} {{item.status}}</div>
+        <div class="box" *ngFor="let item of inprocess" cdkDrag (click)="showdata(showeventmodal,item)" data-toggle="modal"
+        data-target="#ModalCenter">{{item.task}} </div>
       </div>
 
     </div>
@@ -75,12 +105,11 @@
 
       <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
         [cdkDropListConnectedTo]="[inprocessList,developmentList]" class="body" (cdkDropListDropped)="drop($event)">
-        <div class="box" *ngFor="let item of done" cdkDrag>{{item.task}}</div>
+        <div class="box" *ngFor="let item of done" cdkDrag (click)="showdata(showeventmodal,item)" data-toggle="modal"
+        data-target="#ModalCenter">{{item.task}}</div>
       </div>
 
     </div>
-    <div>
-
-    </div>
+    
   </div>
 </div>
