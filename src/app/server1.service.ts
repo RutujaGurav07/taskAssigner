@@ -30,10 +30,10 @@ export class Server1Service {
     return this.request('POST', `${environment.serverUrl}/event`,newEvent );
   }
   
-  updateEvent(event,task) {
-    console.log("createEvent function in server1",event.task);
+  updateEvent(event,originaltask) {
+    console.log("in updateEvent  function in server1",originaltask);
 
-    return this.request('PUT', `${environment.serverUrl}/event/${task}`, event);
+    return this.request('PUT', `${environment.serverUrl}/event/${originaltask}`, event);
   }
 
 }

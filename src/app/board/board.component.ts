@@ -105,11 +105,11 @@ export class BoardComponent implements OnInit {
       task: newdata.task,
       status: updatestatus,
     };
-    const task = newdata.task;
+    // const task = newdata.task;
     console.log('binding to eventdata in update Event', eventData.status, eventData.task)
 
-    this.server.updateEvent(eventData,task).then(() => {
-      console.log("in board component updateEvent function", eventData,task);
+    this.server.updateEvent(eventData,eventData.task).then(() => {
+      console.log("in board component updateEvent function", eventData,eventData.task);
       // this.getEvents();
 
     });
@@ -135,8 +135,12 @@ export class BoardComponent implements OnInit {
       task: this.form.get('task').value,
       status: this.form.get('status').value,
     }
-    console.log('binding to eventdata in update Event',  updatevalue.task,updatevalue.status, this .y)
+    console.log('binding to eventdata in update Event',  updatevalue.task,updatevalue.status, this.y)
+    this.server.updateEvent(updatevalue,this.y).then(() => {
+      console.log("in board component updateFormEvent function", updatevalue,this.y);
+      this.getEvents();
 
+    });
   }
 
 }
