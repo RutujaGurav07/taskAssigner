@@ -3,8 +3,6 @@ import { ITask } from './task'
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem, CdkDrag } from "@angular/cdk/drag-drop";
 import { Server1Service } from '../server1.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import { Xliff } from '@angular/compiler';
-
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -16,8 +14,8 @@ export class BoardComponent implements OnInit {
   currentEvent: any = { id: null, task: ' ', status: ' ' };
   modalCallback: () => void;
   newdata;
-  x;
-  y;
+  Dragupdatestatus;
+  orignaltask;
   development: ITask[] = [];
   inprocess: ITask[] = [];
   done: ITask[] = [];
@@ -32,12 +30,12 @@ export class BoardComponent implements OnInit {
         event.currentIndex);
 
       this.newdata = event.container.data[event.currentIndex];
-      this.x = event.container.element.nativeElement.parentElement.className;
+        this.Dragupdatestatus = event.container.element.nativeElement.parentElement.className;
 
 
     }
 
-    this.updateEvent(this.newdata, this.x);
+    this.updateEvent(this.newdata,  this.Dragupdatestatus);
   }
 
 
@@ -61,7 +59,6 @@ export class BoardComponent implements OnInit {
     this.currentEvent = { task: ' ', status: ' ' };
     this.modalCallback = this.createEvent.bind(this);
     this.updateForm();
-
 
   }
   updateForm() {
@@ -98,46 +95,37 @@ export class BoardComponent implements OnInit {
       this.done = this.events.filter(ev => ev.status == "Done");
     });
   }
-  
+
   updateEvent(newdata, updatestatus) {
-    console.log("in updatefunction", newdata)
     const eventData = {
       task: newdata.task,
       status: updatestatus,
     };
     // const task = newdata.task;
-    console.log('binding to eventdata in update Event', eventData.status, eventData.task)
-
-    this.server.updateEvent(eventData,eventData.task).then(() => {
-      console.log("in board component updateEvent function", eventData,eventData.task);
+    this.server.updateEvent(eventData, eventData.task).then(() => {
       // this.getEvents();
 
     });
   }
   showdata(template, item) {
 
-    console.log("it works")
-    console.log("item", item.status, item.task)
     this.form.setValue({
       task: item.task,
       status: item.status
     })
-    this.y = item.task;
+    this.orignaltask = item.task;
     // this.form.patchValue({
     //   task: item.task,
     //   status: item.status
     // })
 
   }
-  updateFormevent( ){
-    console.log("in update Form event ")
-    const updatevalue={
+  updateFormevent() {
+    const updatevalue = {
       task: this.form.get('task').value,
       status: this.form.get('status').value,
     }
-    console.log('binding to eventdata in update Event',  updatevalue.task,updatevalue.status, this.y)
-    this.server.updateEvent(updatevalue,this.y).then(() => {
-      console.log("in board component updateFormEvent function", updatevalue,this.y);
+    this.server.updateEvent(updatevalue, this.orignaltask).then(() => {
       this.getEvents();
 
     });

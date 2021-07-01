@@ -1,2 +1,9 @@
-
+<div class="main_container">
+    <h1>Profile Summary</h1>
+    <form [formGroup]="myform" (ngSubmit)="onSubmit()">
+        <label>GitHub Username</label>
+        <input formControlName ="Username" class="form-control" placeholder="Username" required> 
+        <button type="button" class="btn btn-primary">Submit</button>      
+    </form>
+</div>
 
