@@ -3,7 +3,7 @@
     <form [formGroup]="myform" (ngSubmit)="onSubmit()">
         <label>GitHub Username</label>
         <input formControlName ="Username" class="form-control" placeholder="Username" required> 
-        <button type="button" class="btn btn-primary">Submit</button>      
+        <button type="button" class="btn btn-primary"(click)="onSubmit()">Submit</button>      
     </form>
 </div>
 
